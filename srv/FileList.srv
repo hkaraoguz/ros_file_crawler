@@ -1,0 +1,11 @@
+string mainpath # The main path for searching files
+
+string[] fileextension # The file extensions such as jpeg, png, jpg
+
+string[] excludedwords # The strings that should be excluded in the name 
+--- 
+string paths # The paths of files in json format sorted as key value pairs for given file extensions as keys
+
+string filenames # The filenames in json format sorted as key value pairs for given file extensions as keys
+
+
