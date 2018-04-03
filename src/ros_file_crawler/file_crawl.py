@@ -10,7 +10,7 @@ from ros_file_crawler.srv import *
 import json
 from os.path import splitext, join
 from os import walk
-
+from natsort import natsorted
 
 class FileCrawl():
 
@@ -54,15 +54,15 @@ class FileCrawl():
                             break
 
                     if count == 0:
-                        if suffix in filenames.keys():
-                            filenames[suffix] +=[filename]
-                            filepaths[suffix] += [join(root, filename)]
+                        if suffix[1:] in filenames.keys():
+                            filenames[suffix[1:]] +=[filename]
+                            filepaths[suffix[1:]] += [join(root, filename)]
                         else:
-                            filenames[suffix] = [filename]
-                            filepaths[suffix] = [join(root, filename)]
+                            filenames[suffix[1:]] = [filename]
+                            filepaths[suffix[1:]] = [join(root, filename)]
 
-                    filenames[suffix].sort()
-                    filepaths[suffix].sort()
+                    filenames[suffix[1:]] = natsorted(filenames[suffix[1:]])
+                    filepaths[suffix[1:]] = natsorted(filepaths[suffix[1:]])
 
         namesjson = json.dumps(filenames, ensure_ascii=False)
         pathsjson = json.dumps(filepaths,ensure_ascii=False)

@@ -2,6 +2,10 @@ ros_file_crawler
 =====
 `ros_file_crawler` provides a ros service for getting the full file paths and file names in a given directory. Desired file extensions and excluded words are be provided as string lists.
 
+Requirements
+-----
+* python natsort package (`sudo pip install natsort`)
+
 Example Usage
 -----
 ```
